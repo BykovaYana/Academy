@@ -20,7 +20,7 @@ public class Menu {
     }
 
     public Menu MainMenu() throws Exception {
-        System.out.println("List of tasks you can find bellow. \n1. chessBoard.ChessBoard.\n2. envelope.Envelope Analysis\n3. triangle.Triangle Sort\n4. Numerical sequence.\n5.fileTask.File parser\n6. Fibonacci series");
+        System.out.println("List of tasks you can find bellow. \n1. Chess Board.\n2. Envelope Analysis\n3. Triangle Sort\n4. Numerical sequence.\n5.File parser\n6. Fibonacci series");
         short taskNumber = 0;
         System.out.println("Please, select a task number! ");
         boolean isTaskSelected = false;

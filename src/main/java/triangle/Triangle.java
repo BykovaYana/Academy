@@ -59,7 +59,6 @@ public class Triangle implements Comparator<Triangle> {
         return area;
     }
 
-    @Override
     public int compare(Triangle firstTriangle, Triangle secondTriangle) {
         return (int) (firstTriangle.area - secondTriangle.area);
     }

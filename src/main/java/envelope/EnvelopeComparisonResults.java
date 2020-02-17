@@ -5,30 +5,39 @@ import java.util.List;
 
 public class EnvelopeComparisonResults {
     private Envelope envelope;
-    private EnvelopeStatus status;
-    private List<Envelope> resultList = new ArrayList<Envelope>();
-
-    public void setEnvelope(Envelope envelope) {
-        this.envelope = envelope;
-    }
-
-    public void setStatus(EnvelopeStatus status) {
-        this.status = status;
-    }
-
-    public void setResultList(List<Envelope> resultList) {
-        this.resultList = resultList;
-    }
+    private List<Envelope> listOfLagerElements = new ArrayList<Envelope>();
+    private List<Envelope> listOfSmallerElements = new ArrayList<Envelope>();
+    private List<Envelope> listOfEqualElements = new ArrayList<Envelope>();
 
     public Envelope getEnvelope() {
         return envelope;
     }
 
-    public EnvelopeStatus getStatus() {
-        return status;
+    public List<Envelope> getListOfLagerElements() {
+        return listOfLagerElements;
     }
 
-    public List<Envelope> getResultList() {
-        return resultList;
+    public List<Envelope> getListOfSmallerElements() {
+        return listOfSmallerElements;
+    }
+
+    public List<Envelope> getListOfEqualElements() {
+        return listOfEqualElements;
+    }
+
+    public void setEnvelope(Envelope envelope) {
+        this.envelope = envelope;
+    }
+
+    public void setListOfLagerElements(List<Envelope> listOfLagerElements) {
+        this.listOfLagerElements = listOfLagerElements;
+    }
+
+    public void setListOfSmallerElements(List<Envelope> listOfSmallerElements) {
+        this.listOfSmallerElements = listOfSmallerElements;
+    }
+
+    public void setListOfEqualElements(List<Envelope> listOfEqualElements) {
+        this.listOfEqualElements = listOfEqualElements;
     }
 }

@@ -1,72 +1,68 @@
 package envelope;
 
 import interfaces.IPlay;
-import util.Converter;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class EnvelopeGame implements IPlay {
-
-    private Converter converter = new Converter();
-    private Scanner scanner = new Scanner(System.in);
-    private List<Envelope> envelopeList = new ArrayList<Envelope>();
+    private GetTheEnvelopesData getTheEnvelopesData = new GetTheEnvelopesData();
     private List<EnvelopeComparisonResults> envelopeComparisonResultsList = new ArrayList<EnvelopeComparisonResults>();
 
     public void Play() throws Exception {
-        GetTheEnvelopesSizes();
-        CheckEnvelopes();
+        List<Envelope> envelopeList = getTheEnvelopesData.GetTheEnvelopesSizes();
+        CheckEnvelopes(envelopeList);
+        PrintResults(envelopeList);
     }
 
-    private void GetTheEnvelopesSizes() throws Exception {
-        boolean isContinue = true;
-        while (isContinue) {
-            Envelope envelope = new Envelope();
-            System.out.println("Please enter size of the envelopes.");
-            boolean isCorrectParameters = false;
-            System.out.println("Please enter the length:");
-            envelope.setLength(converter.TryToFloat(scanner.next()));
-            while (!isCorrectParameters) {
-                System.out.println("Please enter the width:");
-                envelope.setWidth(converter.TryToFloat(scanner.next()));
-                if (envelope.getLength() < envelope.getWidth()) {
-                    System.out.println("Sorry length should be more than width.\nTry again.");
-                } else {
-                    isCorrectParameters = true;
+
+    private void CheckEnvelopes(List<Envelope> envelopeList) {
+        int listSize = envelopeList.size();
+        for (int i = 0; i < listSize; i++) {
+            EnvelopeComparisonResults comparisonResults = new EnvelopeComparisonResults();
+            comparisonResults.setEnvelope(envelopeList.get(i));
+            for (int j = i; j < listSize; j++) {
+                if (i != j) {
+                    if (envelopeList.get(i).compareTo(envelopeList.get(j)) < 0) {
+                        comparisonResults.getListOfSmallerElements().add(envelopeList.get(j));
+                    } else if (envelopeList.get(i).compareTo(envelopeList.get(j)) > 0) {
+                        comparisonResults.getListOfLagerElements().add(envelopeList.get(j));
+                    } else {
+                        comparisonResults.getListOfEqualElements().add(envelopeList.get(j));
+                    }
                 }
             }
-            envelopeList.add(envelope);
-            if (envelopeList.size() >= 2) {
-                System.out.println("Do you want add one more?");
-                String decision = scanner.next();
-                isContinue = decision.equalsIgnoreCase("y") || decision.equalsIgnoreCase("yes");
-            }
+            envelopeComparisonResultsList.add(comparisonResults);
         }
     }
 
-    private void CheckEnvelopes() {
-        int listSize = envelopeList.size();
-        for (int i = 0; i < listSize; i++) {
-            for (int j = i; j < listSize; j++) {
-                if (i != j) {
-                    if ((envelopeList.get(i).getLength() < envelopeList.get(j).getLength()) && (envelopeList.get(i).getWidth() < envelopeList.get(j).getWidth())) {
-                       /* System.out.printf("\n%d envelope bigger than %d.", j, i);
-                        System.out.printf("\nYou can put the %d into the %d.\n", i, j);
-                        System.out.printf("\nSize of envelop %d = > %f*%f.", i, envelopeList.get(i).getLength(), envelopeList.get(i).getWidth());
-                        System.out.printf("\nSize of envelop %d = > %f*%f.\n\n", j, envelopeList.get(j).getLength(), envelopeList.get(j).getWidth());*/
-                    }
-                    else if ((envelopeList.get(i).getLength() > envelopeList.get(j).getLength()) && (envelopeList.get(i).getWidth() > envelopeList.get(j).getWidth())) {
-                        System.out.printf("\n%d envelope bigger than %d.", i, j);
-                        System.out.printf("\nYou can put the %d into the %d.\n", j , i );
-                        System.out.printf("\nSize of envelop %d = > %f*%f.", i, envelopeList.get(i).getLength(), envelopeList.get(i).getWidth());
-                        System.out.printf("\nSize of envelop %d = > %f*%f.\n\n", j, envelopeList.get(j).getLength(), envelopeList.get(j).getWidth());
-                    } else if ((envelopeList.get(i).getLength() == envelopeList.get(j).getLength()) && (envelopeList.get(i).getWidth() == envelopeList.get(j).getWidth())) {
-                        System.out.printf("envelope.Envelope %d and %d are the same.\n", i, j);
-                    } else {
-                        System.out.println("You cannot put one envelope in another.");
-                    }
+    private void PrintResults(List<Envelope> envelopeList) {
+        for (EnvelopeComparisonResults element : envelopeComparisonResultsList) {
+            int indexOfEnvelope = envelopeList.indexOf(element.getEnvelope()) + 1;
+            List<Envelope> listOfLager = element.getListOfLagerElements();
+            List<Envelope> listOfSmaller = element.getListOfSmallerElements();
+            List<Envelope> listOfEqual = element.getListOfEqualElements();
+            System.out.printf("Envelope %d with size %f*%f\n", indexOfEnvelope, element.getEnvelope().getLength(), element.getEnvelope().getWidth());
+            if (!listOfLager.isEmpty()) {
+                System.out.print("Lager than envelopes: ");
+                for (Envelope env : listOfLager) {
+                    System.out.print((envelopeList.indexOf(env) +1) + " ");
                 }
+                System.out.print("\n");
+            }
+            if(!listOfSmaller.isEmpty()) {
+                System.out.print("Smaller than envelopes: ");
+                for (Envelope env : listOfSmaller) {
+                    System.out.print((envelopeList.indexOf(env) +1)+ " ");
+                }
+                System.out.print("\n");
+            }
+            if(!listOfEqual.isEmpty()) {
+                System.out.print("Equal to envelopes: ");
+                for (Envelope env : listOfEqual) {
+                    System.out.print((envelopeList.indexOf(env) +1) + " ");
+                }
+                System.out.print("\n");
             }
         }
     }
