@@ -55,4 +55,3 @@ public class NumericalSequenceGame implements IPlay {
         System.out.println(results);
     }
 }
-

@@ -4,11 +4,7 @@ import java.util.List;
 public class EnvelopeComparisonResults {
     private Envelope envelope;
     private EnvelopeStatus status;
-    private List<Envelope> resultList;
-
-    public EnvelopeComparisonResults() {
-        resultList = new ArrayList<Envelope>();
-    }
+    private List<Envelope> resultList = new ArrayList<Envelope>();
 
     public void setEnvelope(Envelope envelope) {
         this.envelope = envelope;
