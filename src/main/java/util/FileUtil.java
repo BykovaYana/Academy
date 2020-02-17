@@ -1,3 +1,5 @@
+package util;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -16,7 +18,7 @@ public class FileUtil {
             }
             scanner.close();
         } catch (FileNotFoundException e) {
-            System.out.println("File not found.");
+            System.out.println("fileTask.File not found.");
             e.printStackTrace();
         }
         return data;
@@ -41,7 +43,7 @@ public class FileUtil {
         File file = new File(filePath, fileName);
         if (!file.exists())
         {
-            System.out.println("File not found.");
+            System.out.println("fileTask.File not found.");
         }
         return file.exists();
     }

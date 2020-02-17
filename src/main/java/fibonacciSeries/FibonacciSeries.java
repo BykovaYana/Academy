@@ -1,3 +1,5 @@
+package fibonacciSeries;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 

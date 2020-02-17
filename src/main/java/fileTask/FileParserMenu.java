@@ -1,3 +1,8 @@
+package fileTask;
+
+import interfaces.IPlay;
+import util.Converter;
+
 import java.util.Scanner;
 
 public class FileParserMenu implements IPlay {
@@ -52,7 +57,7 @@ public class FileParserMenu implements IPlay {
                 break;
             }
             case 2: {
-                System.out.println("File was changed.");
+                System.out.println("fileTask.File was changed.");
                 break;
             }
         }

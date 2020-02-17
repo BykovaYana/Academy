@@ -1,3 +1,7 @@
+package fileTask;
+
+import util.FileUtil;
+
 import java.util.Scanner;
 
 public class GetDataForFileParser {

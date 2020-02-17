@@ -1,3 +1,8 @@
+package triangle;
+
+import interfaces.IPlay;
+import util.Converter;
+
 import java.util.*;
 
 public class TriangleGame implements IPlay {
@@ -17,7 +22,7 @@ public class TriangleGame implements IPlay {
         Triangle triangle = null;
         while (isContinue) {
             while (!isCorrect) {
-                System.out.println("Please enter triangle data in format <Triangle Name; First side; Second side; Third side>");
+                System.out.println("Please enter triangle data in format <triangle.Triangle Name; First side; Second side; Third side>");
                 String trianglesData = scanner.nextLine();
                 String clearString = trianglesData.replaceAll("\\s+", "");
                 String[] data = clearString.split(";");
@@ -30,7 +35,7 @@ public class TriangleGame implements IPlay {
                     if (ValidateTriangle(triangle)) {
                         break;
                     }else {
-                        System.out.println("Triangle like this does not exist.");
+                        System.out.println("triangle.Triangle like this does not exist.");
                     }
                 } else {
                     System.out.println("Incorrect format of entered data.");
@@ -64,7 +69,7 @@ public class TriangleGame implements IPlay {
             return name;
         } else {
             while (!isNameEntered) {
-                System.out.println("Triangle name is empty!\nPlease enter new name:");
+                System.out.println("triangle.Triangle name is empty!\nPlease enter new name:");
                 newName = scanner.next();
                 if (newName != null && !newName.isEmpty()) {
                     isNameEntered = true;

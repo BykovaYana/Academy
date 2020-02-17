@@ -1,3 +1,8 @@
+package envelope;
+
+import interfaces.IPlay;
+import util.Converter;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -60,7 +65,7 @@ public class EnvelopeGame implements IPlay {
                         System.out.printf("\nSize of envelop %d = > %f*%f.", i, envelopeList.get(i).getLength(), envelopeList.get(i).getWidth());
                         System.out.printf("\nSize of envelop %d = > %f*%f.\n\n", j, envelopeList.get(j).getLength(), envelopeList.get(j).getWidth());
                     } else if ((envelopeList.get(i).getLength() == envelopeList.get(j).getLength()) && (envelopeList.get(i).getWidth() == envelopeList.get(j).getWidth())) {
-                        System.out.printf("Envelope %d and %d are the same.\n", i, j);
+                        System.out.printf("envelope.Envelope %d and %d are the same.\n", i, j);
                     } else {
                         System.out.println("You cannot put one envelope in another.");
                     }

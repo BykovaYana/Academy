@@ -1,3 +1,7 @@
+package fibonacciSeries;
+
+import util.Converter;
+
 import java.util.Scanner;
 
 public class GetFibonacciSeriesData {

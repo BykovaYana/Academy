@@ -1,3 +1,8 @@
+package numericalSequenceGame;
+
+import interfaces.IPlay;
+import util.Converter;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;

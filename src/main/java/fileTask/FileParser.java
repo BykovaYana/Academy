@@ -1,3 +1,7 @@
+package fileTask;
+
+import util.FileUtil;
+
 public class FileParser {
 
     public int CountNumberOfOccurrences(File file) {

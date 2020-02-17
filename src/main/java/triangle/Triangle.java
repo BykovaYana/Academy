@@ -1,3 +1,5 @@
+package triangle;
+
 import java.util.Comparator;
 
 public class Triangle implements Comparator<Triangle> {

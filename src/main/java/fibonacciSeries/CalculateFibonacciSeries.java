@@ -1,3 +1,5 @@
+package fibonacciSeries;
+
 public class CalculateFibonacciSeries {
     public void CalculateSeries(FibonacciSeries fibonacci, short taskNumber) {
         while (IsContinue(fibonacci, taskNumber)){
