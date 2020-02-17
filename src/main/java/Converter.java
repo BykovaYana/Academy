@@ -15,6 +15,20 @@ public class Converter {
         return value;
     }
 
+    public long TryToLong(String string) {
+        long value = 0l;
+        boolean isCorrectValue = false;
+        while (!isCorrectValue) {
+            try {
+                value = Long.valueOf(string);
+                isCorrectValue = true;
+            } catch (Exception ex) {
+                System.out.println("Are you sure that it is a number?\nPlease try again!");
+            }
+        }
+        return value;
+    }
+
     public float TryToFloat(String string) throws Exception {
         float value = 0;
         StringBuilder tempString = new StringBuilder(string);

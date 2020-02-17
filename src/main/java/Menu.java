@@ -10,7 +10,7 @@ public class Menu {
     }
 
     public Menu MainMenu() throws Exception {
-        System.out.println("List of tasks you can find bellow. \n1. ChessBoard.\n2. Envelope Analysis\n3. Triangle Sort\n4. Numerical sequence.\n5.File parser");
+        System.out.println("List of tasks you can find bellow. \n1. ChessBoard.\n2. Envelope Analysis\n3. Triangle Sort\n4. Numerical sequence.\n5.File parser\n6. Fibonacci series");
         short taskNumber = 0;
         System.out.println("Please, select a task number! ");
         boolean isTaskSelected = false;
@@ -44,16 +44,24 @@ public class Menu {
                 TriangleGame triangleGame = new TriangleGame();
                 triangleGame.Play();
                 Proceed(triangleGame);
+                break;
             }
             case 4: {
-               NumericalSequenceGame numericalSequenceGame = new NumericalSequenceGame();
-               numericalSequenceGame.Play();
-               Proceed(numericalSequenceGame);
+                NumericalSequenceGame numericalSequenceGame = new NumericalSequenceGame();
+                numericalSequenceGame.Play();
+                Proceed(numericalSequenceGame);
+                break;
             }
-            case 5:{
+            case 5: {
                 FileParserMenu fileParser = new FileParserMenu();
                 fileParser.Play();
                 Proceed(fileParser);
+                break;
+            }
+            case 6: {
+                FibonacciSeriesMenu fibonacciSeries = new FibonacciSeriesMenu();
+                fibonacciSeries.Play();
+                Proceed(fibonacciSeries);
             }
             default: {
                 MainMenu();
