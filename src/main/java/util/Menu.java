@@ -57,9 +57,9 @@ public class Menu {
                 break;
             }
             case 4: {
-                NumericalSequenceGame numericalSequenceGame = new NumericalSequenceGame();
-                numericalSequenceGame.Play();
-                Proceed(numericalSequenceGame);
+                NumericalSequenceGame numericalSequence = new NumericalSequenceGame();
+                numericalSequence.Play();
+                Proceed(numericalSequence);
                 break;
             }
             case 5: {

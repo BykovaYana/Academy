@@ -51,9 +51,6 @@ public class EnvelopeGame implements IPlay {
             for (int j = i; j < listSize; j++) {
                 if (i != j) {
                     if ((envelopeList.get(i).getLength() < envelopeList.get(j).getLength()) && (envelopeList.get(i).getWidth() < envelopeList.get(j).getWidth())) {
-                      //  if(envelopeComparisonResultsList.stream().filter(o -> o.getEnvelope().equals(envelopeList.get(i))))
-                            //list.stream().filter(o -> o.getName().equals(name)).findFirst().isPresent();
-
                        /* System.out.printf("\n%d envelope bigger than %d.", j, i);
                         System.out.printf("\nYou can put the %d into the %d.\n", i, j);
                         System.out.printf("\nSize of envelop %d = > %f*%f.", i, envelopeList.get(i).getLength(), envelopeList.get(i).getWidth());
