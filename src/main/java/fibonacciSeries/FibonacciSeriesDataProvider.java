@@ -4,11 +4,16 @@ import util.Converter;
 
 import java.util.Scanner;
 
-public class GetFibonacciSeriesData {
-    private FibonacciSeries fibonacci = new FibonacciSeries();
-    private Scanner scanner = new Scanner(System.in);
-    private Converter converter = new Converter();
+public class FibonacciSeriesDataProvider {
+    private FibonacciSeries fibonacci;
+    private Scanner scanner;
+    private Converter converter;
 
+    public FibonacciSeriesDataProvider() {
+        fibonacci = new FibonacciSeries();
+        scanner = new Scanner(System.in);
+        converter = new Converter();
+    }
 
     public FibonacciSeries GetData(short taskNumber) {
         if (taskNumber == 1) {
@@ -18,7 +23,7 @@ public class GetFibonacciSeriesData {
             fibonacci.setMaxValue(converter.TryToLong(scanner.nextLine()));
         } else {
             System.out.println("Please enter number length;");
-            fibonacci.setNumberLength(converter.TryToShot(scanner.nextLine()));
+            fibonacci.setNumberLength(converter.TryToShort(scanner.nextLine()));
         }
         return fibonacci;
     }

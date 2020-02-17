@@ -1,9 +1,9 @@
 package util;
 
-import chessBoard.ChessBoard;
+import chessBoard.ChessBoardGame;
 import envelope.EnvelopeGame;
-import fibonacciSeries.FibonacciSeriesMenu;
-import fileTask.FileParserMenu;
+import fibonacciSeries.FibonacciSeriesGame;
+import fileTask.FileParserGame;
 import interfaces.IPlay;
 import numericalSequenceGame.NumericalSequenceGame;
 import triangle.TriangleGame;
@@ -25,7 +25,7 @@ public class Menu {
         System.out.println("Please, select a task number! ");
         boolean isTaskSelected = false;
         while (!isTaskSelected) {
-            taskNumber = converter.TryToShot(scanner.nextLine());
+            taskNumber = converter.TryToShort(scanner.next());
             if (taskNumber < 1 || taskNumber > 9) {
                 System.out.println("Sorry I have only 9 task please try again.");
             } else {
@@ -37,46 +37,39 @@ public class Menu {
     }
 
     private void TaskCall(short taskNumber) throws Exception {
+
+        IPlay game=null;
         switch (taskNumber) {
             case 1: {
-                ChessBoard chessBoard = new ChessBoard();
-                chessBoard.Play();
-                Proceed(chessBoard);
+                game = new ChessBoardGame();
                 break;
             }
             case 2: {
-                EnvelopeGame envelopeGame = new EnvelopeGame();
-                envelopeGame.Play();
-                Proceed(envelopeGame);
+                 game = new EnvelopeGame();
                 break;
             }
             case 3: {
-                TriangleGame triangleGame = new TriangleGame();
-                triangleGame.Play();
-                Proceed(triangleGame);
+                 game = new TriangleGame();
                 break;
             }
             case 4: {
-                NumericalSequenceGame numericalSequence = new NumericalSequenceGame();
-                numericalSequence.Play();
-                Proceed(numericalSequence);
+                 game = new NumericalSequenceGame();
                 break;
             }
             case 5: {
-                FileParserMenu fileParser = new FileParserMenu();
-                fileParser.Play();
-                Proceed(fileParser);
+                game = new FileParserGame();
                 break;
             }
             case 6: {
-                FibonacciSeriesMenu fibonacciSeries = new FibonacciSeriesMenu();
-                fibonacciSeries.Play();
-                Proceed(fibonacciSeries);
+                game = new FibonacciSeriesGame();
+                break;
             }
             default: {
                 MainMenu();
             }
         }
+        game.Play();
+        Proceed(game);
     }
 
     private void Proceed(IPlay game) throws Exception {

@@ -1,9 +1,7 @@
 package util;
 
-import java.util.InputMismatchException;
-
 public class Converter {
-    public short TryToShot(String string) {
+    public short TryToShort(String string) {
         short value = 0;
         boolean isCorrectValue = false;
         while (!isCorrectValue) {
@@ -37,11 +35,11 @@ public class Converter {
         try {
             value = Float.valueOf(string);
         } catch (NumberFormatException ex) {
-            if (tempString.indexOf(",")==0) {
-                tempString= tempString.deleteCharAt(0);
+            if (tempString.indexOf(",") == 0) {
+                tempString = tempString.deleteCharAt(0);
             }
-            if (tempString.charAt(tempString.length()-1) == ',') {
-                tempString=  tempString.deleteCharAt(tempString.length()-1);
+            if (tempString.charAt(tempString.length() - 1) == ',') {
+                tempString = tempString.deleteCharAt(tempString.length() - 1);
             }
             long numberOfComa = tempString.chars().filter(q -> q == ',').count();
             if (numberOfComa > 1) {

@@ -2,13 +2,12 @@ package chessBoard;
 
 import interfaces.IPlay;
 
-public class ChessBoard implements IPlay {
-    private GetChessBoardData data = new GetChessBoardData();
+public class ChessBoardGame implements IPlay {
+    private ChessBoardLengthProvider lengthProvider = new ChessBoardLengthProvider();
     private short boardLength;
 
-
     public void Play() {
-        boardLength = data.GetTheBoardLength();
+        boardLength = lengthProvider.GetLength();
         PrintBoard();
     }
 

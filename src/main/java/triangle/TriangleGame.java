@@ -8,20 +8,25 @@ import java.util.List;
 
 public class TriangleGame implements IPlay {
 
-    private List<Triangle> triangleList = new ArrayList<>();
-    private GetTrianglesData getTrianglesData = new GetTrianglesData();
+    private List<Triangle> triangleList;
+    private TrianglesDataProvider trianglesDataProvider;
 
-    public void Play() throws Exception {
-        getTrianglesData.GetData();
-        CalculateAreas();
-        PrintResult();
+    public TriangleGame() {
+        triangleList = new ArrayList<>();
+        trianglesDataProvider = new TrianglesDataProvider();
     }
 
-    private void PrintResult() {
+    public void Play() throws Exception {
+        trianglesDataProvider.GetData();
+        CalculateAreas();
+        PrintGameResults();
+    }
+
+    private void PrintGameResults() {
         System.out.println("============= Triangles list: ===============");
         Collections.sort(triangleList, new Triangle());
         for (int i = 0; i < triangleList.size(); i++) {
-            System.out.printf("[%s]: %f cm\n", triangleList.get(i).getTriangleName(), triangleList.get(i).getArea());
+            System.out.printf("[%s]: %fcm\n", triangleList.get(i).getTriangleName(), triangleList.get(i).getArea());
         }
     }
 
@@ -30,6 +35,4 @@ public class TriangleGame implements IPlay {
             triangleList.get(i).setArea(triangleList.get(i).CalculateArea());
         }
     }
-
-
 }

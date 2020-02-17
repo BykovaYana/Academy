@@ -4,16 +4,22 @@ import util.Converter;
 
 import java.util.Scanner;
 
-public class GetDataForNumericalSequence {
-    private Converter converter = new Converter();
-    private Scanner scanner = new Scanner(System.in);
-    private NumericalSequence numericalSequence = new NumericalSequence();
+public class NumericalSequenceProvider {
+    private Converter converter;
+    private Scanner scanner;
+    private NumericalSequence numericalSequence;
+
+    public NumericalSequenceProvider() {
+        scanner = new Scanner(System.in);
+        converter = new Converter();
+        numericalSequence = new NumericalSequence();
+    }
 
     public NumericalSequence GetTheData() {
         boolean isCorrect = false;
         while (!isCorrect) {
             System.out.println("Please enter a sequence length: ");
-            numericalSequence.setSequenceLength(converter.TryToShot(scanner.next()));
+            numericalSequence.setSequenceLength(converter.TryToShort(scanner.next()));
             if (numericalSequence.getSequenceLength() <= 0) {
                 System.out.println("Incorrect data entered.\nLength should be more than 0.\nTry again.");
             } else {
@@ -23,7 +29,7 @@ public class GetDataForNumericalSequence {
         isCorrect = false;
         while (!isCorrect) {
             System.out.println("Please enter minimum square");
-            numericalSequence.setMinimumSquare(converter.TryToShot(scanner.next()));
+            numericalSequence.setMinimumSquare(converter.TryToShort(scanner.next()));
             if (numericalSequence.getMinimumSquare() <= 0) {
                 System.out.println("Incorrect data entered.\nSquare should be more than 0.\nTry again.");
             } else {

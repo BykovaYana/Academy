@@ -5,8 +5,13 @@ import util.Converter;
 import java.util.Scanner;
 
 public class Validator {
-    private Scanner scanner = new Scanner(System.in);
-    private Converter converter = new Converter();
+    private Scanner scanner;
+    private Converter converter;
+
+    public Validator() {
+        scanner = new Scanner(System.in);
+        converter = new Converter();
+    }
 
     public String ValidateName(String name) {
         boolean isNameEntered = false;

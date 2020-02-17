@@ -9,7 +9,6 @@ public class FileParser {
         String []array = fileContent.split(file.getStringForSearch());
         int count = array.length -1;
         return count;
-
     }
 
     public void ReplaceString(File file) {

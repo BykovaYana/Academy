@@ -4,9 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class GetTrianglesData {
-    private Scanner scanner = new Scanner(System.in);
-    private Validator validator = new Validator();
+public class TrianglesDataProvider {
+    private Scanner scanner;
+    private Validator validator;
+
+    public TrianglesDataProvider() {
+        scanner = new Scanner(System.in);
+        validator = new Validator();
+    }
 
     public List<Triangle> GetData() throws Exception {
         boolean isContinue = true;
@@ -26,7 +31,7 @@ public class GetTrianglesData {
                     triangle.setSecondSide(validator.ValidateSide(data[2]));
                     triangle.setThirdSide(validator.ValidateSide(data[3]));
                     if (validator.ValidateTriangle(triangle)) {
-                        break;
+                        isCorrect = true;
                     }else {
                         System.out.println("triangle.Triangle like this does not exist.");
                     }
