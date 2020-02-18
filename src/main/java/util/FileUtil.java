@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class FileUtil {
-    public static String ReadFromFile(String filePath, String fileName) {
+    public static String readFromFile(String filePath, String fileName) {
         String data = "";
         try {
             File file = new File(filePath, fileName);
@@ -23,7 +23,7 @@ public class FileUtil {
         return data;
     }
 
-    public static void WriteToFile(String filePath, String fileName, String content, boolean isAppend) {
+    public static void writeToFile(String filePath, String fileName, String content, boolean isAppend) {
         String fullPath = filePath + fileName;
         try {
             FileWriter fileWriter = new FileWriter(fullPath, isAppend);

@@ -17,11 +17,11 @@ public class LuckyTicketsDataProvider {
         converter = new Converter();
     }
 
-    public void GetInputData() {
+    public void getInputData() {
         boolean isCorrectData = false;
         while (!isCorrectData) {
             System.out.println("Please enter minimal ticket number.");
-            long minNumber = converter.TryToLong(scanner.next());
+            long minNumber = converter.tryToLong(scanner.next());
             if (Long.toString(minNumber).length() > 6 || minNumber < 0) {
                 System.out.println("Ticket number should be not longer that 6 digit and more than 0.\nPlease try again.");
             } else {
@@ -32,7 +32,7 @@ public class LuckyTicketsDataProvider {
         isCorrectData = false;
         while (!isCorrectData) {
             System.out.println("Please enter minimal ticket number.");
-            long minNumber = converter.TryToLong(scanner.next());
+            long minNumber = converter.tryToLong(scanner.next());
             if (Long.toString(minNumber).length() > 6 || minNumber < 0) {
                 System.out.println("Ticket number should be not longer that 6 digit and more than 0.\nPlease try again.");
             } else {
@@ -42,7 +42,7 @@ public class LuckyTicketsDataProvider {
         }
     }
 
-    public TicketsSequence CreateSequence() {
+    public TicketsSequence createSequence() {
         List<Long> numbers = new ArrayList<>();
         numbers.add(ticketsSequence.getMinNumber());
         int size = numbers.size();

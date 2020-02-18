@@ -16,14 +16,14 @@ public class FibonacciSeriesGame implements IPlay {
         calculate = new CalculateFibonacciSeries();
     }
 
-    public void Play() {
-        taskNumber =fibonacciSeriesMenu.Menu();
-        fibonacci = data.GetData(taskNumber);
-        calculate.CalculateSeries(fibonacci, taskNumber);
-        PrintGameResult(fibonacci, taskNumber);
+    public void play() {
+        taskNumber =fibonacciSeriesMenu.menu();
+        fibonacci = data.getData(taskNumber);
+        calculate.calculateSeries(fibonacci, taskNumber);
+        printGameResult(fibonacci, taskNumber);
     }
 
-    private void PrintGameResult(FibonacciSeries fibonacci, short taskNumber) {
+    private void printGameResult(FibonacciSeries fibonacci, short taskNumber) {
         switch (taskNumber) {
             case 1: {
                 for (Long element : fibonacci.getFibonacciList()) {

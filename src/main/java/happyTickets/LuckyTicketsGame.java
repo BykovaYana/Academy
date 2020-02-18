@@ -16,10 +16,10 @@ public class LuckyTicketsGame implements IPlay {
         ticketsValidator = new LuckyTicketsValidator();
     }
 
-    public void Play() {
-        dataProvider.GetInputData();
-        ticketsSequence = dataProvider.CreateSequence();
-        ticketsValidator.CountBySimpleMethod(ticketsSequence);
-        List<String> luckyTicketsByFirst = ticketsValidator.CountBySimpleMethod(ticketsSequence);
+    public void play() {
+        dataProvider.getInputData();
+        ticketsSequence = dataProvider.createSequence();
+        ticketsValidator.countBySimpleMethod(ticketsSequence);
+        List<String> luckyTicketsByFirst = ticketsValidator.countBySimpleMethod(ticketsSequence);
     }
 }

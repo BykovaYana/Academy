@@ -1,5 +1,7 @@
 package triangle;
 
+import util.Menu;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -13,7 +15,7 @@ public class TrianglesDataProvider {
         validator = new Validator();
     }
 
-    public List<Triangle> GetData() throws Exception {
+    public List<Triangle> getData() throws Exception {
         boolean isContinue = true;
         boolean isCorrect = false;
         Triangle triangle = null;
@@ -24,13 +26,16 @@ public class TrianglesDataProvider {
                 String trianglesData = scanner.nextLine();
                 String clearString = trianglesData.replaceAll("\\s+", "");
                 String[] data = clearString.split(";");
-                triangle = new Triangle();
                 if (data.length >= 4) {
-                    triangle.setTriangleName(validator.ValidateName(data[0]));
-                    triangle.setFirstSide(validator.ValidateSide(data[1]));
-                    triangle.setSecondSide(validator.ValidateSide(data[2]));
-                    triangle.setThirdSide(validator.ValidateSide(data[3]));
-                    if (validator.ValidateTriangle(triangle)) {
+                    float firstSide;
+                    float secondSide;
+                    float thirdSide;
+                    firstSide = validator.validateSide(data[1]);
+                    secondSide= validator.validateSide(data[2]);
+                    thirdSide = validator.validateSide(data[3]);
+                    if (validator.validateTriangle(firstSide, secondSide,thirdSide)) {
+                        triangle = new Triangle(firstSide, secondSide,thirdSide);
+                        triangle.setTriangleName(validator.validateName(data[0]));
                         isCorrect = true;
                     }else {
                         System.out.println("triangle.Triangle like this does not exist.");
@@ -40,11 +45,8 @@ public class TrianglesDataProvider {
                 }
             }
             triangleList.add(triangle);
-            System.out.println("Do you want add one more?");
-            String decision = scanner.nextLine();
-            isContinue = decision.equalsIgnoreCase("y") || decision.equalsIgnoreCase("yes");
+            isContinue = Menu.isContinue();
         }
-
         return triangleList;
     }
 }

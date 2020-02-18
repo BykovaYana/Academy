@@ -1,12 +1,12 @@
 package util;
 
 public class Converter {
-    public short TryToShort(String string) {
+    public short tryToShort(String string) {
         short value = 0;
         boolean isCorrectValue = false;
         while (!isCorrectValue) {
             try {
-                value = Short.valueOf(string);
+                value = Short.parseShort(string);
                 isCorrectValue = true;
             } catch (Exception ex) {
                 System.out.println("Are you sure that it is a number?\nPlease try again!");
@@ -15,12 +15,12 @@ public class Converter {
         return value;
     }
 
-    public long TryToLong(String string) {
-        long value = 0l;
+    public long tryToLong(String string) {
+        long value = 0L;
         boolean isCorrectValue = false;
         while (!isCorrectValue) {
             try {
-                value = Long.valueOf(string);
+                value = Long.parseLong(string);
                 isCorrectValue = true;
             } catch (Exception ex) {
                 System.out.println("Are you sure that it is a number?\nPlease try again!");
@@ -29,11 +29,11 @@ public class Converter {
         return value;
     }
 
-    public float TryToFloat(String string) throws Exception {
-        float value = 0;
+    public float tryToFloat(String string) throws Exception {
+        float value;
         StringBuilder tempString = new StringBuilder(string);
         try {
-            value = Float.valueOf(string);
+            value = Float.parseFloat(string);
         } catch (NumberFormatException ex) {
             if (tempString.indexOf(",") == 0) {
                 tempString = tempString.deleteCharAt(0);
@@ -46,7 +46,7 @@ public class Converter {
                 throw new Exception("Incorrect format of entered data.");
             } else {
                 String newString = tempString.toString();
-                value = Float.valueOf(newString.replace(',', '.'));
+                value = Float.parseFloat(newString.replace(',', '.'));
             }
         }
         return value;

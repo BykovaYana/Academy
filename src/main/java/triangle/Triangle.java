@@ -9,6 +9,15 @@ public class Triangle implements Comparator<Triangle> {
     private float thirdSide;
     private double area;
 
+    public Triangle(float firstSide, float secondSide, float thirdSide) {
+        this.firstSide = firstSide;
+        this.secondSide = secondSide;
+        this.thirdSide = thirdSide;
+    }
+
+    public Triangle() {
+    }
+
     public String getTriangleName() {
         return triangleName;
     }
@@ -21,24 +30,12 @@ public class Triangle implements Comparator<Triangle> {
         return firstSide;
     }
 
-    public void setFirstSide(float firstSide) {
-        this.firstSide = firstSide;
-    }
-
     public float getSecondSide() {
         return secondSide;
     }
 
-    public void setSecondSide(float secondSide) {
-        this.secondSide = secondSide;
-    }
-
     public float getThirdSide() {
         return thirdSide;
-    }
-
-    public void setThirdSide(float thirdSide) {
-        this.thirdSide = thirdSide;
     }
 
     public double getArea() {
@@ -49,12 +46,12 @@ public class Triangle implements Comparator<Triangle> {
         this.area = area;
     }
 
-    public double CalculatePerimeter() {
+    public double calculatePerimeter() {
         return (firstSide + secondSide + thirdSide) / 2;
     }
 
-    public double CalculateArea() {
-        double perimeter = CalculatePerimeter();
+    public double calculateArea() {
+        double perimeter = calculatePerimeter();
         double area = Math.sqrt(perimeter * (perimeter - firstSide) * (perimeter - secondSide) * (perimeter - thirdSide));
         return area;
     }

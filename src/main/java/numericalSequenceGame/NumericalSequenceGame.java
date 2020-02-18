@@ -11,13 +11,13 @@ public class NumericalSequenceGame implements IPlay {
         calculateSequence = new CalculateSequence();
     }
 
-    public void Play() {
-        NumericalSequence numericalSequence = dataProvider.GetTheData();
-        String result = calculateSequence.CalculateTheResult(numericalSequence);
-        PrintResult(result);
+    public void play() {
+        NumericalSequence numericalSequence = dataProvider.getTheData();
+        String result = calculateSequence.calculateTheResult(numericalSequence);
+        printResult(result);
     }
 
-    private void PrintResult(String results) {
+    private void printResult(String results) {
         System.out.println(results);
     }
 }

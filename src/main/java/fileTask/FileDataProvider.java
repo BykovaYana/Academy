@@ -12,7 +12,7 @@ public class FileDataProvider {
         scanner = new Scanner(System.in);
     }
 
-    public File GetData(short taskNumber) {
+    public File getData(short taskNumber) {
         do {
             System.out.println("Please enter file path:");
             file.setFilePath(scanner.next());

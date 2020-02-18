@@ -17,18 +17,18 @@ public class FileParserGame implements IPlay {
         file = new File();
     }
 
-    public void Play() {
-        taskNumber = parserMenu.Menu();
-        file = dataProvider.GetData(taskNumber);
+    public void play() {
+        taskNumber = parserMenu.menu();
+        file = dataProvider.getData(taskNumber);
         if (taskNumber == 1) {
-            numberOfOccurrences = fileParser.CountNumberOfOccurrences(file);
+            numberOfOccurrences = fileParser.countNumberOfOccurrences(file);
         } else {
-            fileParser.ReplaceString(file);
+            fileParser.replaceString(file);
         }
-        PrintResult(taskNumber);
+        printResult(taskNumber);
     }
 
-    private void PrintResult(short taskNumber) {
+    private void printResult(short taskNumber) {
         switch (taskNumber) {
             case 1: {
                 System.out.printf("The number of occurrences of string '%s' is %d\n", file.getStringForSearch(), numberOfOccurrences);

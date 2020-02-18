@@ -5,7 +5,7 @@ import java.util.List;
 
 public class LuckyTicketsValidator {
 
-    public List<String> CountBySimpleMethod(TicketsSequence happyTickets) {
+    public List<String> countBySimpleMethod(TicketsSequence happyTickets) {
         List<String> luckyTicketsSequence = new ArrayList<>();
         for (String ticket : happyTickets.getTicketsSequence()) {
             String firstPart = ticket.substring(0, 2);

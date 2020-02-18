@@ -14,14 +14,14 @@ public class EnvelopeGame implements IPlay {
         envelopeComparisonResults = new ArrayList<EnvelopeComparisonResults>();
     }
 
-    public void Play() throws Exception {
-        List<Envelope> envelopeList = envelopesDataProvider.GetEnvelopesSizes();
-        CheckEnvelopes(envelopeList);
-        PrintGameResults(envelopeList);
+    public void play() throws Exception {
+        List<Envelope> envelopeList = envelopesDataProvider.getEnvelopesSizes();
+        checkEnvelopes(envelopeList);
+        printGameResults(envelopeList);
     }
 
 
-    private void CheckEnvelopes(List<Envelope> envelopeList) {
+    private void checkEnvelopes(List<Envelope> envelopeList) {
         int listSize = envelopeList.size();
         for (int i = 0; i < listSize; i++) {
             EnvelopeComparisonResults comparisonResults = new EnvelopeComparisonResults();
@@ -41,7 +41,7 @@ public class EnvelopeGame implements IPlay {
         }
     }
 
-    private void PrintGameResults(List<Envelope> envelopeList) {
+    private void printGameResults(List<Envelope> envelopeList) {
         for (EnvelopeComparisonResults result : envelopeComparisonResults) {
             int indexOfEnvelope = envelopeList.indexOf(result.getEnvelope()) + 1;
 

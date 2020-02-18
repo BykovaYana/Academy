@@ -6,7 +6,7 @@ import java.util.List;
 public class CalculateSequence {
     private short startedNumber;
 
-    public String CalculateTheResult(NumericalSequence numericalSequence) {
+    public String calculateTheResult(NumericalSequence numericalSequence) {
         startedNumber = (short)Math.sqrt(numericalSequence.getMinimumSquare());
         List<String> resultsList = new ArrayList<String>();
 

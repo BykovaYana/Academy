@@ -7,13 +7,13 @@ public class PalindromeGame implements IPlay {
     private Palindrome palindrome = new Palindrome();
     private StringValidator validator = new StringValidator();
 
-    public void Play() {
-        palindrome = dataProvider.GetData();
-        validator.GetPalindromes(palindrome);
-        PrintGameResult();
+    public void play() {
+        palindrome = dataProvider.getData();
+        validator.getPalindromes(palindrome);
+        printGameResult();
     }
 
-    private void PrintGameResult() {
+    private void printGameResult() {
         if (palindrome.getPalindromes().isEmpty()) {
             System.out.println("Palindromes not found.");
         } else {

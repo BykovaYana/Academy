@@ -13,7 +13,7 @@ public class Validator {
         converter = new Converter();
     }
 
-    public String ValidateName(String name) {
+    public String validateName(String name) {
         boolean isNameEntered = false;
         String newName = "";
         if (name != null && !name.isEmpty()) {
@@ -30,16 +30,16 @@ public class Validator {
         return newName;
     }
 
-    public float ValidateSide(String side) throws Exception {
+    public float validateSide(String side) throws Exception {
         boolean isSideEntered = false;
-        float sideSize = converter.TryToFloat(side);
+        float sideSize = converter.tryToFloat(side);
         float newSize = 0;
         if (sideSize > 0) {
             return sideSize;
         }
         while (!isSideEntered) {
             System.out.println("Incorrect side size! Side should be more than 0!\nPlease enter new value:");
-            newSize = converter.TryToFloat(scanner.next());
+            newSize = converter.tryToFloat(scanner.next());
             if (newSize > 0) {
                 isSideEntered = true;
             }
@@ -47,10 +47,11 @@ public class Validator {
         return newSize;
     }
 
-    public boolean ValidateTriangle(Triangle triangle) {
-        if (triangle.getFirstSide() < triangle.CalculatePerimeter() &&
-                triangle.getSecondSide() < triangle.CalculatePerimeter() &&
-                triangle.getThirdSide() < triangle.CalculatePerimeter()) {
+    public boolean validateTriangle(float firstSide, float secondSide, float thirdSide) {
+        Triangle triangle = new Triangle(firstSide, secondSide, thirdSide);
+        if (firstSide < triangle.calculatePerimeter() &&
+                secondSide < triangle.calculatePerimeter() &&
+                thirdSide < triangle.calculatePerimeter()) {
             return true;
         }
         return false;

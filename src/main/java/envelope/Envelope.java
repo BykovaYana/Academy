@@ -4,20 +4,17 @@ public class Envelope implements Comparable<Envelope> {
     private float length;
     private float width;
 
+    public Envelope(float length, float width) {
+        this.length = length;
+        this.width = width;
+    }
+
     public float getLength() {
         return length;
     }
 
-    public void setLength(float Length) {
-        this.length = Length;
-    }
-
     public float getWidth() {
         return width;
-    }
-
-    public void setWidth(float Width) {
-        this.width = Width;
     }
 
     public int compareTo(Envelope envelope) {

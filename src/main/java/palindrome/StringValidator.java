@@ -1,11 +1,11 @@
 package palindrome;
 
 public class StringValidator {
-    public Palindrome GetPalindromes(Palindrome palindrome) {
+    public Palindrome getPalindromes(Palindrome palindrome) {
         int stringLength = palindrome.getInputString().length();
         for (int i = 0; i < stringLength; i++) {
             for (int j = i + 2; j <= stringLength; j++) {
-                if (IsPalindrome(palindrome.getInputString().substring(i, j))) {
+                if (isPalindrome(palindrome.getInputString().substring(i, j))) {
                     palindrome.getPalindromes().add(palindrome.getInputString().substring(i, j));
                 }
             }
@@ -13,7 +13,7 @@ public class StringValidator {
         return palindrome;
     }
 
-    private boolean IsPalindrome(String inputString) {
+    private boolean isPalindrome(String inputString) {
         String revertedString = new StringBuilder(inputString).reverse().toString();
         return (inputString.equals(revertedString));
     }

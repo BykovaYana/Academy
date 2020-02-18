@@ -6,12 +6,12 @@ public class ChessBoardGame implements IPlay {
     private ChessBoardLengthProvider lengthProvider = new ChessBoardLengthProvider();
     private short boardLength;
 
-    public void Play() {
-        boardLength = lengthProvider.GetLength();
-        PrintBoard();
+    public void play() {
+        boardLength = lengthProvider.getLength();
+        printBoard();
     }
 
-    private void PrintBoard() {
+    private void printBoard() {
         for (int i = 1; i <= boardLength; i++) {
             for (int j = 1; j <= boardLength; j++) {
                 if ((i % 2 != 0 && j % 2 == 0) || (i % 2 == 0 && j % 2 != 0)) {

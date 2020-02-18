@@ -16,13 +16,13 @@ public class TriangleGame implements IPlay {
         trianglesDataProvider = new TrianglesDataProvider();
     }
 
-    public void Play() throws Exception {
-        trianglesDataProvider.GetData();
-        CalculateAreas();
-        PrintGameResults();
+    public void play() throws Exception {
+        trianglesDataProvider.getData();
+        calculateAreas();
+        printGameResults();
     }
 
-    private void PrintGameResults() {
+    private void printGameResults() {
         System.out.println("============= Triangles list: ===============");
         Collections.sort(triangleList, new Triangle());
         for (int i = 0; i < triangleList.size(); i++) {
@@ -30,9 +30,9 @@ public class TriangleGame implements IPlay {
         }
     }
 
-    private void CalculateAreas() {
+    private void calculateAreas() {
         for (int i = 0; i < triangleList.size(); i++) {
-            triangleList.get(i).setArea(triangleList.get(i).CalculateArea());
+            triangleList.get(i).setArea(triangleList.get(i).calculateArea());
         }
     }
 }

@@ -6,7 +6,7 @@ public class PalindromeDataProvider {
     private Palindrome palindrome = new Palindrome();
     private Scanner scanner = new Scanner(System.in);
 
-    public Palindrome GetData() {
+    public Palindrome getData() {
         boolean isCorrectData = false;
         while (!isCorrectData) {
             System.out.println("Please enter string. String length should be more than 1.");

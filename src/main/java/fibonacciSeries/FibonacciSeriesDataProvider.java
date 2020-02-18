@@ -15,15 +15,15 @@ public class FibonacciSeriesDataProvider {
         converter = new Converter();
     }
 
-    public FibonacciSeries GetData(short taskNumber) {
+    public FibonacciSeries getData(short taskNumber) {
         if (taskNumber == 1) {
             System.out.println("Please enter minimal value:");
-            fibonacci.setMinValue(converter.TryToLong(scanner.nextLine()));
+            fibonacci.setMinValue(converter.tryToLong(scanner.nextLine()));
             System.out.println("Please enter max value:");
-            fibonacci.setMaxValue(converter.TryToLong(scanner.nextLine()));
+            fibonacci.setMaxValue(converter.tryToLong(scanner.nextLine()));
         } else {
             System.out.println("Please enter number length;");
-            fibonacci.setNumberLength(converter.TryToShort(scanner.nextLine()));
+            fibonacci.setNumberLength(converter.tryToShort(scanner.nextLine()));
         }
         return fibonacci;
     }
