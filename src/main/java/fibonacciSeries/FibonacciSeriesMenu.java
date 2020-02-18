@@ -1,6 +1,7 @@
 package fibonacciSeries;
 
 import util.Converter;
+import util.Menu;
 
 import java.util.Scanner;
 
@@ -15,16 +16,13 @@ public class FibonacciSeriesMenu {
 
     public short menu() {
         boolean isTaskSelected = false;
+        String menuOption = "1.Print numbers in the range.\n2.Print numbers whose length is equal to the given number.";
         short taskNumber = 0;
         System.out.println("Please select a option.");
-        System.out.println("1.Print numbers in the range.\n2.Print numbers whose length is equal to the given number.");
+        System.out.println(menuOption);
         while (!isTaskSelected) {
             taskNumber = converter.tryToShort(scanner.nextLine());
-            if (taskNumber < 1 || taskNumber > 2) {
-                System.out.println("Sorry you have only 2 option try again.");
-            } else {
-                isTaskSelected = true;
-            }
+            isTaskSelected = Menu.isCorrectTaskSelected(menuOption, taskNumber);
         }
         return taskNumber;
     }

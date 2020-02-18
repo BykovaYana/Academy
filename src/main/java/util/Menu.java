@@ -23,18 +23,17 @@ public class Menu {
 
     public Menu mainMenu() throws Exception {
         boolean isContinue = true;
+        String menuOption = "1. Chess Board.\n2. Envelope Analysis\n3. Triangle Sort\n" +
+                "4. Numerical sequence.\n5.File parser\n6. Fibonacci series\n7. Palindrome\n8. HappyTickets\n9.Empty\n10. Exit";
         while (isContinue) {
-            System.out.println("List of tasks you can find bellow. \n1. Chess Board.\n2. Envelope Analysis\n3. Triangle Sort\n" +
-                    "4. Numerical sequence.\n5.File parser\n6. Fibonacci series\n7. Palindrome\n8. HappyTickets\n10. Exit");
+            System.out.println("List of tasks you can find bellow.");
+            System.out.println(menuOption);
             short taskNumber = 0;
             System.out.println("Please, select a task number! ");
-
-            taskNumber = converter.tryToShort(scanner.next());
-            if (taskNumber < 1 || taskNumber > 9) {
-                System.out.println("Sorry I have only 9 task please try again.");
-            } else {
-                isContinue = taskCall(taskNumber);
+            while (!isCorrectTaskSelected(menuOption, taskNumber)) {
+                taskNumber = converter.tryToShort(scanner.next());
             }
+            isContinue = taskCall(taskNumber);
         }
         return this;
     }
@@ -45,6 +44,17 @@ public class Menu {
         String decision = scanner.nextLine();
         scanner.close();
         return decision.equalsIgnoreCase("y") || decision.equalsIgnoreCase("yes");
+    }
+
+    public static boolean isCorrectTaskSelected(String menuOptions, short taskNumber) {
+        String[] tempArray = menuOptions.split("\n");
+        int countOfOptions = tempArray.length;
+        if (taskNumber < 1 || taskNumber > countOfOptions) {
+            System.out.printf("Sorry you have only %d option try again.\n", countOfOptions);
+            return false;
+        } else {
+            return true;
+        }
     }
 
     private boolean taskCall(short taskNumber) throws Exception {

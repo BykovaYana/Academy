@@ -1,10 +1,11 @@
 package fileTask;
 
 import util.Converter;
+import util.Menu;
 
 import java.util.Scanner;
 
-public class FileParserMenu  {
+public class FileParserMenu {
     private Converter converter;
     private Scanner scanner;
 
@@ -15,17 +16,17 @@ public class FileParserMenu  {
 
     public short menu() {
         boolean isTaskSelected = false;
+        String menuOptions = "1.Count the number of occurrences of a line in a text file.\n" +
+                "2.Replace the string with another in the specified file.";
         System.out.println("Please select a option.");
-        System.out.println("1.Count the number of occurrences of a line in a text file.\n2.Replace the string with another in the specified file.");
+        System.out.println(menuOptions);
         short taskNumber = 0;
         while (!isTaskSelected) {
             taskNumber = converter.tryToShort(scanner.nextLine());
-            if (taskNumber < 1 || taskNumber > 2) {
-                System.out.println("Sorry you have only 2 option try again.");
-            } else {
-                isTaskSelected = true;
-            }
+            isTaskSelected = Menu.isCorrectTaskSelected(menuOptions, taskNumber);
         }
         return taskNumber;
     }
+
+
 }
