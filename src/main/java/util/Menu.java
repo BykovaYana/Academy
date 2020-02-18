@@ -6,6 +6,7 @@ import fibonacciSeries.FibonacciSeriesGame;
 import fileTask.FileParserGame;
 import interfaces.IPlay;
 import numericalSequenceGame.NumericalSequenceGame;
+import palindrome.PalindromeGame;
 import triangle.TriangleGame;
 
 import java.util.Scanner;
@@ -20,7 +21,7 @@ public class Menu {
     }
 
     public Menu MainMenu() throws Exception {
-        System.out.println("List of tasks you can find bellow. \n1. Chess Board.\n2. Envelope Analysis\n3. Triangle Sort\n4. Numerical sequence.\n5.File parser\n6. Fibonacci series");
+        System.out.println("List of tasks you can find bellow. \n1. Chess Board.\n2. Envelope Analysis\n3. Triangle Sort\n4. Numerical sequence.\n5.File parser\n6. Fibonacci series\n7. Palindrome");
         short taskNumber = 0;
         System.out.println("Please, select a task number! ");
         boolean isTaskSelected = false;
@@ -62,6 +63,10 @@ public class Menu {
             }
             case 6: {
                 game = new FibonacciSeriesGame();
+                break;
+            }
+            case 7: {
+                game = new PalindromeGame();
                 break;
             }
             default: {
