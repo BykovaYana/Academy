@@ -1,4 +1,4 @@
-package happyTickets;
+package luckyTickets;
 
 import java.util.ArrayList;
 import java.util.List;

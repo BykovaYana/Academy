@@ -4,7 +4,7 @@ import chessBoard.ChessBoardGame;
 import envelope.EnvelopeGame;
 import fibonacciSeries.FibonacciSeriesGame;
 import fileTask.FileParserGame;
-import happyTickets.LuckyTicketsGame;
+import luckyTickets.LuckyTicketsGame;
 import interfaces.IPlay;
 import numericalSequenceGame.NumericalSequenceGame;
 import palindrome.PalindromeGame;
@@ -30,9 +30,9 @@ public class Menu {
             System.out.println(menuOption);
             short taskNumber = 0;
             System.out.println("Please, select a task number! ");
-            while (!isCorrectTaskSelected(menuOption, taskNumber)) {
+            do {
                 taskNumber = converter.tryToShort(scanner.next());
-            }
+            }while (!isCorrectTaskSelected(menuOption, taskNumber));
             isContinue = taskCall(taskNumber);
         }
         return this;
