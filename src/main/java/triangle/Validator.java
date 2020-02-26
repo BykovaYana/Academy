@@ -1,15 +1,14 @@
 package triangle;
 
+import util.ConsoleIo;
 import util.Converter;
 
-import java.util.Scanner;
-
 public class Validator {
-    private Scanner scanner;
     private Converter converter;
+    private ConsoleIo io;
 
     public Validator() {
-        scanner = new Scanner(System.in);
+        io = new ConsoleIo();
         converter = new Converter();
     }
 
@@ -20,8 +19,8 @@ public class Validator {
             return name;
         } else {
             while (!isNameEntered) {
-                System.out.println("triangle.Triangle name is empty!\nPlease enter new name:");
-                newName = scanner.next();
+                io.printLine("Triangle name is empty!\nPlease enter new name:");
+                newName = io.readString();
                 if (newName != null && !newName.isEmpty()) {
                     isNameEntered = true;
                 }
@@ -38,8 +37,8 @@ public class Validator {
             return sideSize;
         }
         while (!isSideEntered) {
-            System.out.println("Incorrect side size! Side should be more than 0!\nPlease enter new value:");
-            newSize = converter.tryToFloat(scanner.next());
+            io.printLine("Incorrect side size! Side should be more than 0!\nPlease enter new value:");
+            newSize = converter.tryToFloat(io.readString());
             if (newSize > 0) {
                 isSideEntered = true;
             }

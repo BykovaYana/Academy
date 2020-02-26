@@ -1,6 +1,7 @@
 package luckyTickets;
 
 import interfaces.IPlay;
+import util.ConsoleIo;
 
 import java.util.List;
 
@@ -8,12 +9,13 @@ public class LuckyTicketsGame implements IPlay {
     private LuckyTicketsDataProvider dataProvider;
     private TicketsSequence ticketsSequence;
     private LuckyTicketsValidator ticketsValidator;
-
+    private ConsoleIo io;
 
     public LuckyTicketsGame() {
         dataProvider = new LuckyTicketsDataProvider();
         ticketsSequence = new TicketsSequence();
         ticketsValidator = new LuckyTicketsValidator();
+        io= new ConsoleIo();
     }
 
     public void play() {
@@ -34,13 +36,13 @@ public class LuckyTicketsGame implements IPlay {
         int result = calculateGameResult(luckyTicketsByFirstMethod, luckyTicketsBySecondMethod);
         if (result>0)
         {
-            System.out.println("First method found more lucky tickets than second.");
+            io.printLine("First method found more lucky tickets than second.");
         }
         else if (result<0)
         {
-            System.out.println("Second method found more lucky tickets than first.");
+            io.printLine("Second method found more lucky tickets than first.");
         }else {
-            System.out.println("Methods found the same number of tickets.");
+            io.printLine("Methods found the same number of tickets.");
         }
         System.out.printf("Result first method %d. Result second method  %d.\n", luckyTicketsByFirstMethod.size(), luckyTicketsBySecondMethod.size());
     }

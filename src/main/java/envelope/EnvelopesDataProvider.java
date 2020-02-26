@@ -1,38 +1,45 @@
 package envelope;
 
+import chessBoard.ChessBoardGame;
+import org.apache.log4j.Logger;
+import util.ConsoleIo;
 import util.Converter;
 import util.Menu;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class EnvelopesDataProvider {
+    final static Logger logger = Logger.getLogger(ChessBoardGame.class);
+
     private Converter converter;
-    private Scanner scanner;
+    private ConsoleIo io;
 
     public EnvelopesDataProvider() {
+        io = new ConsoleIo();
         converter = new Converter();
-        scanner = new Scanner(System.in);
     }
 
     public List<Envelope> getEnvelopesSizes() throws Exception {
+        logger.debug("Get envelopes sizes.");
         List<Envelope> envelopeList = new ArrayList<Envelope>();
         boolean isContinue = true;
-        Envelope envelope= null;
+        Envelope envelope = null;
         while (isContinue) {
-            System.out.println("Please enter size of the envelopes.");
+            io.printLine("Please enter size of the envelopes.");
             boolean isCorrectParameters = false;
-            System.out.println("Please enter the length:");
-            float length = converter.tryToFloat(scanner.next());
+            io.printLine("Please enter the length:");
+            float length = converter.tryToFloat(io.readString());
             float width;
             while (!isCorrectParameters) {
-                System.out.println("Please enter the width:");
-                width= converter.tryToFloat(scanner.next());
+                io.printLine("Please enter the width:");
+                width = converter.tryToFloat(io.readString());
                 if (length < width) {
-                    System.out.println("Sorry length should be more than width.\nTry again.");
+                    io.printLine("Sorry length should be more than width.\nTry again.");
+                    logger.error("Incorrect width entered.");
                 } else {
                     isCorrectParameters = true;
+                    logger.debug("Envelope sizes received." + length + "*" + width);
                     envelope = new Envelope(length, width);
                 }
             }

@@ -1,11 +1,20 @@
 package palindrome;
 
 import interfaces.IPlay;
+import util.ConsoleIo;
 
 public class PalindromeGame implements IPlay {
-    private PalindromeDataProvider dataProvider = new PalindromeDataProvider();
-    private Palindrome palindrome = new Palindrome();
-    private StringValidator validator = new StringValidator();
+    private PalindromeDataProvider dataProvider;
+    private Palindrome palindrome;
+    private StringValidator validator;
+    private ConsoleIo io;
+
+    public PalindromeGame() {
+        io = new ConsoleIo();
+        dataProvider = new PalindromeDataProvider();
+        palindrome = new Palindrome();
+        validator = new StringValidator();
+    }
 
     public void play() {
         palindrome = dataProvider.getData();
@@ -15,12 +24,12 @@ public class PalindromeGame implements IPlay {
 
     private void printGameResult() {
         if (palindrome.getPalindromes().isEmpty()) {
-            System.out.println("Palindromes not found.");
+            io.printLine("Palindromes not found.");
         } else {
             for (String palindrome : palindrome.getPalindromes()) {
-                System.out.print(palindrome + " ");
+                io.print(palindrome + " ");
             }
-            System.out.println("\n");
+            io.printLine("\n");
         }
     }
 

@@ -1,18 +1,18 @@
 package triangle;
 
+import util.ConsoleIo;
 import util.Menu;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class TrianglesDataProvider {
-    private Scanner scanner;
     private Validator validator;
+    private ConsoleIo io;
 
     public TrianglesDataProvider() {
-        scanner = new Scanner(System.in);
         validator = new Validator();
+        io = new ConsoleIo();
     }
 
     public List<Triangle> getData() throws Exception {
@@ -22,8 +22,8 @@ public class TrianglesDataProvider {
         List<Triangle> triangleList = new ArrayList<>();
         while (isContinue) {
             while (!isCorrect) {
-                System.out.println("Please enter triangle data in format <triangle.Triangle Name; First side; Second side; Third side>");
-                String trianglesData = scanner.nextLine();
+                io.printLine("Please enter triangle data in format <triangle.Triangle Name; First side; Second side; Third side>");
+                String trianglesData = io.readString();
                 String clearString = trianglesData.replaceAll("\\s+", "");
                 String[] data = clearString.split(";");
                 if (data.length >= 4) {
@@ -31,17 +31,17 @@ public class TrianglesDataProvider {
                     float secondSide;
                     float thirdSide;
                     firstSide = validator.validateSide(data[1]);
-                    secondSide= validator.validateSide(data[2]);
+                    secondSide = validator.validateSide(data[2]);
                     thirdSide = validator.validateSide(data[3]);
-                    if (validator.validateTriangle(firstSide, secondSide,thirdSide)) {
-                        triangle = new Triangle(firstSide, secondSide,thirdSide);
+                    if (validator.validateTriangle(firstSide, secondSide, thirdSide)) {
+                        triangle = new Triangle(firstSide, secondSide, thirdSide);
                         triangle.setTriangleName(validator.validateName(data[0]));
                         isCorrect = true;
-                    }else {
-                        System.out.println("triangle.Triangle like this does not exist.");
+                    } else {
+                        io.printLine("Triangle like this does not exist.");
                     }
                 } else {
-                    System.out.println("Incorrect format of entered data.");
+                    io.printLine("Incorrect format of entered data.");
                 }
             }
             triangleList.add(triangle);

@@ -1,29 +1,28 @@
 package fibonacciSeries;
 
+import util.ConsoleIo;
 import util.Converter;
-
-import java.util.Scanner;
 
 public class FibonacciSeriesDataProvider {
     private FibonacciSeries fibonacci;
-    private Scanner scanner;
     private Converter converter;
+    private ConsoleIo io;
 
     public FibonacciSeriesDataProvider() {
         fibonacci = new FibonacciSeries();
-        scanner = new Scanner(System.in);
         converter = new Converter();
+        io = new ConsoleIo();
     }
 
     public FibonacciSeries getData(short taskNumber) {
         if (taskNumber == 1) {
-            System.out.println("Please enter minimal value:");
-            fibonacci.setMinValue(converter.tryToLong(scanner.nextLine()));
-            System.out.println("Please enter max value:");
-            fibonacci.setMaxValue(converter.tryToLong(scanner.nextLine()));
+            io.printLine("Please enter minimal value:");
+            fibonacci.setMinValue(converter.tryToLong(io.readString()));
+            io.printLine("Please enter max value:");
+            fibonacci.setMaxValue(converter.tryToLong(io.readString()));
         } else {
-            System.out.println("Please enter number length;");
-            fibonacci.setNumberLength(converter.tryToShort(scanner.nextLine()));
+            io.printLine("Please enter number length:");
+            fibonacci.setNumberLength(converter.tryToShort(io.readString()));
         }
         return fibonacci;
     }

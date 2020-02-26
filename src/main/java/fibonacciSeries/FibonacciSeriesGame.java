@@ -1,12 +1,14 @@
 package fibonacciSeries;
 
 import interfaces.IPlay;
+import util.ConsoleIo;
 
 public class FibonacciSeriesGame implements IPlay {
     private FibonacciSeriesDataProvider data;
     private FibonacciSeries fibonacci;
     private CalculateFibonacciSeries calculate;
     private FibonacciSeriesMenu fibonacciSeriesMenu;
+    private ConsoleIo io;
     private short taskNumber;
 
     public FibonacciSeriesGame() {
@@ -14,6 +16,7 @@ public class FibonacciSeriesGame implements IPlay {
         fibonacci = new FibonacciSeries();
         fibonacciSeriesMenu = new FibonacciSeriesMenu();
         calculate = new CalculateFibonacciSeries();
+        io = new ConsoleIo();
     }
 
     public void play() {
@@ -31,17 +34,17 @@ public class FibonacciSeriesGame implements IPlay {
                         System.out.print(element + " ");
                     }
                 }
-                System.out.println("\n");
+                io.printLine("\n");
                 break;
             }
             case 2: {
                 for (Long element : fibonacci.getFibonacciList()) {
                     String tempString = element.toString();
                     if (tempString.length() == fibonacci.getNumberLength()) {
-                        System.out.print(element + " ");
+                        io.printLine(element + " ");
                     }
                 }
-                System.out.println("\n");
+                io.printLine("\n");
                 break;
             }
         }

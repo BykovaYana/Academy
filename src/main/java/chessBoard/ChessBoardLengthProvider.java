@@ -1,25 +1,34 @@
 package chessBoard;
 
+import org.apache.log4j.Logger;
+import util.ConsoleIo;
 import util.Converter;
 
-import java.util.Scanner;
-
 public class ChessBoardLengthProvider {
-    private Converter converter = new Converter();
-    private Scanner scanner = new Scanner(System.in);
+    final static Logger logger = Logger.getLogger(ChessBoardLengthProvider.class);
+    private ConsoleIo io;
+    private Converter converter;
+
+    public ChessBoardLengthProvider() {
+        converter = new Converter();
+        io = new ConsoleIo();
+            }
 
     public short getLength() {
-        System.out.println("Board length should be more that 2 and less than 100.\nPlease, enter a board length: ");
+        logger.debug("Get a board length.");
+        io.printLine("Board length should be more that 2 and less than 100.\nPlease, enter a board length: ");
         boolean isCorrectValue = false;
         short boardLength = 0;
         while (!isCorrectValue) {
-            boardLength = converter.tryToShort(scanner.next());
+            boardLength = converter.tryToShort(io.readString());
             if (boardLength < 2 || boardLength > 100) {
-                System.out.println("Opps. Incorrect value. Try again.");
+                io.printLine("Opps. Incorrect value. Try again.");
+                logger.error("Incorrect value entered. Value is "+ boardLength);
             } else {
                 isCorrectValue = true;
             }
         }
+        logger.debug("A board length is " + boardLength);
         return boardLength;
     }
 }

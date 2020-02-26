@@ -1,29 +1,29 @@
 package fileTask;
 
+import util.ConsoleIo;
 import util.FileUtil;
-import java.util.Scanner;
 
 public class FileDataProvider {
     public File file;
-    private Scanner scanner;
+    private ConsoleIo io;
 
     public FileDataProvider() {
+        io = new ConsoleIo();
         file = new File();
-        scanner = new Scanner(System.in);
     }
 
     public File getData(short taskNumber) {
         do {
-            System.out.println("Please enter file path:");
-            file.setFilePath(scanner.next());
-            System.out.println("Please enter file name:");
-            file.setFileName(scanner.next());
+            io.printLine("Please enter file path:");
+            file.setFilePath(io.readString());
+            io.printLine("Please enter file name:");
+            file.setFileName(io.readString());
         } while (!FileUtil.IsFileExist(file.getFilePath(), file.getFileName()));
-        System.out.println("Please enter string for searching.");
-        file.setStringForSearch(scanner.next());
+        io.printLine("Please enter string for searching.");
+        file.setStringForSearch(io.readString());
         if (taskNumber == 2) {
-            System.out.println("Please enter string for replace.");
-            file.setStringForReplace(scanner.next());
+            io.printLine("Please enter string for replace.");
+            file.setStringForReplace(io.readString());
         }
         return file;
     }

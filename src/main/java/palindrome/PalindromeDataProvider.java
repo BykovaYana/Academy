@@ -1,21 +1,26 @@
 package palindrome;
 
-import java.util.Scanner;
+import util.ConsoleIo;
 
 public class PalindromeDataProvider {
-    private Palindrome palindrome = new Palindrome();
-    private Scanner scanner = new Scanner(System.in);
+    private Palindrome palindrome;
+    private ConsoleIo io;
+
+    public PalindromeDataProvider() {
+        palindrome = new Palindrome();
+        io = new ConsoleIo();
+    }
 
     public Palindrome getData() {
         boolean isCorrectData = false;
         while (!isCorrectData) {
-            System.out.println("Please enter string. String length should be more than 1.");
-            String input = scanner.next();
+            io.printLine("Please enter string. String length should be more than 1.");
+            String input = io.readString();
             if (input.length() >= 2) {
                 palindrome.setInputString(input);
                 isCorrectData = true;
             } else {
-                System.out.println("Incorrect entered data. Please try again.");
+                io.printLine("Incorrect entered data. Please try again.");
             }
         }
         return palindrome;

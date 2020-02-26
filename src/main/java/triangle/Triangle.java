@@ -26,18 +26,6 @@ public class Triangle implements Comparator<Triangle> {
         this.triangleName = triangleName;
     }
 
-    public float getFirstSide() {
-        return firstSide;
-    }
-
-    public float getSecondSide() {
-        return secondSide;
-    }
-
-    public float getThirdSide() {
-        return thirdSide;
-    }
-
     public double getArea() {
         return area;
     }

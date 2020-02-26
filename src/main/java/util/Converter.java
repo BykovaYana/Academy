@@ -1,6 +1,12 @@
 package util;
 
 public class Converter {
+    private ConsoleIo io;
+
+    public Converter() {
+        io = new ConsoleIo();
+    }
+
     public short tryToShort(String string) {
         short value = 0;
         boolean isCorrectValue = false;
@@ -9,7 +15,7 @@ public class Converter {
                 value = Short.parseShort(string);
                 isCorrectValue = true;
             } catch (Exception ex) {
-                System.out.println("Are you sure that it is a number?\nPlease try again!");
+                io.printLine("Are you sure that it is a number?\nPlease try again!");
             }
         }
         return value;
@@ -23,7 +29,7 @@ public class Converter {
                 value = Long.parseLong(string);
                 isCorrectValue = true;
             } catch (Exception ex) {
-                System.out.println("Are you sure that it is a number?\nPlease try again!");
+                io.printLine("Are you sure that it is a number?\nPlease try again!");
             }
         }
         return value;

@@ -1,27 +1,26 @@
 package fibonacciSeries;
 
+import util.ConsoleIo;
 import util.Converter;
 import util.Menu;
 
-import java.util.Scanner;
-
 public class FibonacciSeriesMenu {
     private Converter converter;
-    private Scanner scanner;
+    private ConsoleIo io;
 
     public FibonacciSeriesMenu() {
         converter = new Converter();
-        scanner = new Scanner(System.in);
+        io = new ConsoleIo();
     }
 
     public short menu() {
         boolean isTaskSelected = false;
         String menuOption = "1.Print numbers in the range.\n2.Print numbers whose length is equal to the given number.";
         short taskNumber = 0;
-        System.out.println("Please select a option.");
-        System.out.println(menuOption);
+        io.printLine("Please select a option.");
+        io.printLine(menuOption);
         while (!isTaskSelected) {
-            taskNumber = converter.tryToShort(scanner.nextLine());
+            taskNumber = converter.tryToShort(io.readString());
             isTaskSelected = Menu.isCorrectTaskSelected(menuOption, taskNumber);
         }
         return taskNumber;

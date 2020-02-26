@@ -1,37 +1,36 @@
 package numericalSequenceGame;
 
+import util.ConsoleIo;
 import util.Converter;
-
-import java.util.Scanner;
 
 public class NumericalSequenceProvider {
     private Converter converter;
-    private Scanner scanner;
     private NumericalSequence numericalSequence;
+    private ConsoleIo io;
 
     public NumericalSequenceProvider() {
-        scanner = new Scanner(System.in);
         converter = new Converter();
         numericalSequence = new NumericalSequence();
+        io = new ConsoleIo();
     }
 
     public NumericalSequence getTheData() {
         boolean isCorrect = false;
         while (!isCorrect) {
-            System.out.println("Please enter a sequence length: ");
-            numericalSequence.setSequenceLength(converter.tryToShort(scanner.next()));
+            io.printLine("Please enter a sequence length: ");
+            numericalSequence.setSequenceLength(converter.tryToShort(io.readString()));
             if (numericalSequence.getSequenceLength() <= 0) {
-                System.out.println("Incorrect data entered.\nLength should be more than 0.\nTry again.");
+                io.printLine("Incorrect data entered.\nLength should be more than 0.\nTry again.");
             } else {
                 isCorrect = true;
             }
         }
         isCorrect = false;
         while (!isCorrect) {
-            System.out.println("Please enter minimum square");
-            numericalSequence.setMinimumSquare(converter.tryToShort(scanner.next()));
+            io.printLine("Please enter minimum square");
+            numericalSequence.setMinimumSquare(converter.tryToShort(io.readString()));
             if (numericalSequence.getMinimumSquare() <= 0) {
-                System.out.println("Incorrect data entered.\nSquare should be more than 0.\nTry again.");
+                io.printLine("Incorrect data entered.\nSquare should be more than 0.\nTry again.");
             } else {
                 isCorrect = true;
             }
