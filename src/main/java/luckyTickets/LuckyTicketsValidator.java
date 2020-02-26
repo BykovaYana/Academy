@@ -1,11 +1,16 @@
 package luckyTickets;
 
+import chessBoard.ChessBoardLengthProvider;
+import org.apache.log4j.Logger;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class LuckyTicketsValidator {
+    final static Logger logger = Logger.getLogger(ChessBoardLengthProvider.class);
 
     public List<String> countBySimpleMethod(TicketsSequence happyTickets) {
+        logger.debug("Count lucky tickets with simple method.");
         List<String> luckyTicketsSequence = new ArrayList<>();
         for (String ticket : happyTickets.getTicketsSequence()) {
             String firstPart = ticket.substring(0, 3);
@@ -24,6 +29,8 @@ public class LuckyTicketsValidator {
     }
 
     public List<String> countByDifficultMethod(TicketsSequence happyTickets) {
+        logger.debug("Count lucky tickets with difficult method.");
+
         List<String> luckyTicketsSequence = new ArrayList<>();
         for (String ticket : happyTickets.getTicketsSequence()) {
             int sumOfEven = 0;
@@ -36,8 +43,7 @@ public class LuckyTicketsValidator {
                     sumOfOdd += nextDigit;
                 }
             }
-            if (sumOfEven==sumOfOdd)
-            {
+            if (sumOfEven == sumOfOdd) {
                 luckyTicketsSequence.add(ticket);
             }
         }

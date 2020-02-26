@@ -1,9 +1,13 @@
 package numericalSequenceGame;
 
+import chessBoard.ChessBoardLengthProvider;
+import org.apache.log4j.Logger;
 import util.ConsoleIo;
 import util.Converter;
 
 public class NumericalSequenceProvider {
+    final static Logger logger = Logger.getLogger(ChessBoardLengthProvider.class);
+
     private Converter converter;
     private NumericalSequence numericalSequence;
     private ConsoleIo io;
@@ -15,6 +19,7 @@ public class NumericalSequenceProvider {
     }
 
     public NumericalSequence getTheData() {
+        logger.debug("Get data for numerical sequence.");
         boolean isCorrect = false;
         while (!isCorrect) {
             io.printLine("Please enter a sequence length: ");

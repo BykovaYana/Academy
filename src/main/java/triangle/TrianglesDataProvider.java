@@ -1,5 +1,7 @@
 package triangle;
 
+import chessBoard.ChessBoardLengthProvider;
+import org.apache.log4j.Logger;
 import util.ConsoleIo;
 import util.Menu;
 
@@ -7,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TrianglesDataProvider {
+    final static Logger logger = Logger.getLogger(ChessBoardLengthProvider.class);
+
     private Validator validator;
     private ConsoleIo io;
 
@@ -16,6 +20,7 @@ public class TrianglesDataProvider {
     }
 
     public List<Triangle> getData() throws Exception {
+        logger.debug("Get triangle data.");
         boolean isContinue = true;
         boolean isCorrect = false;
         Triangle triangle = null;

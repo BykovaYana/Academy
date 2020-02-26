@@ -1,9 +1,13 @@
 package fibonacciSeries;
 
+import chessBoard.ChessBoardLengthProvider;
+import org.apache.log4j.Logger;
 import util.ConsoleIo;
 import util.Converter;
 
 public class FibonacciSeriesDataProvider {
+    final static Logger logger = Logger.getLogger(ChessBoardLengthProvider.class);
+
     private FibonacciSeries fibonacci;
     private Converter converter;
     private ConsoleIo io;
@@ -15,6 +19,7 @@ public class FibonacciSeriesDataProvider {
     }
 
     public FibonacciSeries getData(short taskNumber) {
+        logger.debug("Get data for series.");
         if (taskNumber == 1) {
             io.printLine("Please enter minimal value:");
             fibonacci.setMinValue(converter.tryToLong(io.readString()));

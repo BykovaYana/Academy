@@ -1,6 +1,11 @@
 package numberToWords;
 
+import chessBoard.ChessBoardLengthProvider;
+import org.apache.log4j.Logger;
+
 public class NumberToWords {
+    final static Logger logger = Logger.getLogger(ChessBoardLengthProvider.class);
+
     private static final String[] units = {
             "ноль",
             "один",
@@ -65,6 +70,7 @@ public class NumberToWords {
     };
 
     public String convert(Long number) {
+        logger.debug("Convert number to words.");
         String numberInWords = "";
         if (number < 20) {
             return convertUnits(Math.toIntExact(number));

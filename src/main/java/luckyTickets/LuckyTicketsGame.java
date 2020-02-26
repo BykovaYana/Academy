@@ -1,11 +1,15 @@
 package luckyTickets;
 
+import chessBoard.ChessBoardLengthProvider;
 import interfaces.IPlay;
+import org.apache.log4j.Logger;
 import util.ConsoleIo;
 
 import java.util.List;
 
 public class LuckyTicketsGame implements IPlay {
+    final static Logger logger = Logger.getLogger(ChessBoardLengthProvider.class);
+
     private LuckyTicketsDataProvider dataProvider;
     private TicketsSequence ticketsSequence;
     private LuckyTicketsValidator ticketsValidator;
@@ -28,11 +32,13 @@ public class LuckyTicketsGame implements IPlay {
     }
 
     private int calculateGameResult(List<String> luckyTicketsByFirstMethod, List<String> luckyTicketsBySecondMethod){
+        logger.debug("Calculate game result.");
         return luckyTicketsByFirstMethod.size() - luckyTicketsBySecondMethod.size();
     }
 
     private void printGameResult(List<String> luckyTicketsByFirstMethod, List<String> luckyTicketsBySecondMethod)
     {
+        logger.debug("Print game result.");
         int result = calculateGameResult(luckyTicketsByFirstMethod, luckyTicketsBySecondMethod);
         if (result>0)
         {

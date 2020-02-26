@@ -1,9 +1,13 @@
 package fileTask;
 
+import chessBoard.ChessBoardLengthProvider;
+import org.apache.log4j.Logger;
 import util.ConsoleIo;
 import util.FileUtil;
 
 public class FileDataProvider {
+    final static Logger logger = Logger.getLogger(ChessBoardLengthProvider.class);
+
     public File file;
     private ConsoleIo io;
 
@@ -13,6 +17,7 @@ public class FileDataProvider {
     }
 
     public File getData(short taskNumber) {
+        logger.debug("Get file data.");
         do {
             io.printLine("Please enter file path:");
             file.setFilePath(io.readString());

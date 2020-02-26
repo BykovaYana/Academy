@@ -1,5 +1,7 @@
 package luckyTickets;
 
+import chessBoard.ChessBoardLengthProvider;
+import org.apache.log4j.Logger;
 import util.ConsoleIo;
 import util.Converter;
 
@@ -7,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LuckyTicketsDataProvider {
+    final static Logger logger = Logger.getLogger(ChessBoardLengthProvider.class);
+
     private TicketsSequence ticketsSequence;
     private Converter converter;
     private ConsoleIo io;
@@ -18,6 +22,8 @@ public class LuckyTicketsDataProvider {
     }
 
     public void getInputData() {
+        logger.debug("Get tickets data.");
+
         boolean isCorrectData = false;
         while (!isCorrectData) {
             io.printLine("Please enter minimal ticket number.");
@@ -45,6 +51,8 @@ public class LuckyTicketsDataProvider {
     }
 
     public TicketsSequence createSequence() {
+        logger.debug("Create sequence.");
+
         List<Long> numbers = new ArrayList<>();
         numbers.add(ticketsSequence.getMinNumber());
         int size = numbers.size();

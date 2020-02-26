@@ -28,10 +28,10 @@ public class ConsoleIo <T>{
         return 1;
     }
 
-    public int printFormat(String string, T firstVariable, @Nullable T secondVariable)
+    public int printFormat(String string, T firstVariable, @Nullable T secondVariable,  @Nullable T thirdVariable)
     {
         try{
-            System.out.printf(string, firstVariable, secondVariable);
+            System.out.printf(string, firstVariable, secondVariable, thirdVariable);
             return 1;
         }
         catch (Exception e)

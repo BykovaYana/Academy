@@ -1,9 +1,13 @@
 package fileTask;
 
+import chessBoard.ChessBoardLengthProvider;
 import interfaces.IPlay;
+import org.apache.log4j.Logger;
 import util.ConsoleIo;
 
 public class FileParserGame implements IPlay {
+    final static Logger logger = Logger.getLogger(ChessBoardLengthProvider.class);
+
     private FileParserMenu parserMenu;
     private FileDataProvider dataProvider;
     private File file;
@@ -32,9 +36,10 @@ public class FileParserGame implements IPlay {
     }
 
     private void printResult(short taskNumber) {
+        logger.debug("Print game result.");
         switch (taskNumber) {
             case 1: {
-                io.printFormat("The number of occurrences of string '%s' is %d\n", file.getStringForSearch(), numberOfOccurrences);
+                io.printFormat("The number of occurrences of string '%s' is %d\n", file.getStringForSearch(), numberOfOccurrences, null);
                 break;
             }
             case 2: {

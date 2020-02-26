@@ -1,9 +1,13 @@
 package triangle;
 
+import chessBoard.ChessBoardLengthProvider;
+import org.apache.log4j.Logger;
 import util.ConsoleIo;
 import util.Converter;
 
 public class Validator {
+    final static Logger logger = Logger.getLogger(ChessBoardLengthProvider.class);
+
     private Converter converter;
     private ConsoleIo io;
 
@@ -13,6 +17,7 @@ public class Validator {
     }
 
     public String validateName(String name) {
+        logger.debug("Validate triangle name.");
         boolean isNameEntered = false;
         String newName = "";
         if (name != null && !name.isEmpty()) {
@@ -30,6 +35,8 @@ public class Validator {
     }
 
     public float validateSide(String side) throws Exception {
+        logger.debug("Validate triangle side.");
+
         boolean isSideEntered = false;
         float sideSize = converter.tryToFloat(side);
         float newSize = 0;
@@ -47,6 +54,8 @@ public class Validator {
     }
 
     public boolean validateTriangle(float firstSide, float secondSide, float thirdSide) {
+        logger.debug("Validate triangle.");
+
         Triangle triangle = new Triangle(firstSide, secondSide, thirdSide);
         if (firstSide < triangle.calculatePerimeter() &&
                 secondSide < triangle.calculatePerimeter() &&

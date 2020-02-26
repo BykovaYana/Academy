@@ -1,9 +1,13 @@
 package palindrome;
 
+import chessBoard.ChessBoardLengthProvider;
 import interfaces.IPlay;
+import org.apache.log4j.Logger;
 import util.ConsoleIo;
 
 public class PalindromeGame implements IPlay {
+    final static Logger logger = Logger.getLogger(ChessBoardLengthProvider.class);
+
     private PalindromeDataProvider dataProvider;
     private Palindrome palindrome;
     private StringValidator validator;
@@ -23,6 +27,7 @@ public class PalindromeGame implements IPlay {
     }
 
     private void printGameResult() {
+        logger.debug("Print game result.");
         if (palindrome.getPalindromes().isEmpty()) {
             io.printLine("Palindromes not found.");
         } else {
@@ -32,5 +37,4 @@ public class PalindromeGame implements IPlay {
             io.printLine("\n");
         }
     }
-
 }
